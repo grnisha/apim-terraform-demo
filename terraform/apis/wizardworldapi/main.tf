@@ -46,7 +46,7 @@ resource "azurerm_api_management_api_schema" "wizardworldapi" {
 
 
 #-----------------------------------
-# Deploy API Operation
+# Deploy API Operation - Elixirs
 #-----------------------------------
 resource "azurerm_api_management_api_operation" "wizardworldapi" {
   api_management_name = var.apim_name
@@ -122,7 +122,7 @@ resource "azurerm_api_management_api_operation" "wizardworldapi" {
 }
 
 #-----------------------------------
-# Deploy operation policy
+# Deploy operation policy - Elixirs
 #-----------------------------------
 resource "azurerm_api_management_api_operation_policy" "wizardworldapi" {
   api_management_name = var.apim_name
@@ -130,5 +130,52 @@ resource "azurerm_api_management_api_operation_policy" "wizardworldapi" {
   api_name            = azurerm_api_management_api.wizardworldapi.name
   operation_id        = "get-elixirs"
   xml_content         = file("./policies/op-elixirs-policy.xml")
-  depends_on = [azurerm_api_management_api.wizardworldapi]
+  depends_on = [azurerm_api_management_api.wizardworldapi, azurerm_api_management_api_operation.wizardworldapi]
+}
+
+#-----------------------------------
+# Deploy API Operation - Houses
+#-----------------------------------
+resource "azurerm_api_management_api_operation" "wizardworldapihouses" {
+  api_management_name = var.apim_name
+  resource_group_name = var.rg_name
+  api_name            = azurerm_api_management_api.wizardworldapi.name
+  operation_id        = "get-houses"
+  display_name        = "Get Houses"
+  method              = "GET"
+  url_template        = "/Houses"
+  description         = "Get all Houses"
+  depends_on = [azurerm_api_management_api.wizardworldapi, azurerm_api_management_api_schema.wizardworldapi]
+  request {
+    query_parameter {
+      name       = "query"
+      type       = "object"
+      schema_id  = "wizardworldschema"
+      type_name  = "GetHousesQuery"
+      required  = false
+    }
+  }
+
+  response {
+    status_code = 200
+    description = "Success"
+
+    representation {
+      content_type = "text/plain"
+      schema_id    = "wizardworldschema"
+      type_name    = "HousesGet200TextPlainResponse"
+    }
+
+    representation {
+      content_type = "application/json"
+      schema_id    = "wizardworldschema"
+      type_name    = "HousesGet200ApplicationJsonResponse"
+    }
+
+    representation {
+      content_type = "text/json"
+      schema_id    = "wizardworldschema"
+      type_name    = "HousesGet200TextJsonResponse"
+    }
+  }
 }
