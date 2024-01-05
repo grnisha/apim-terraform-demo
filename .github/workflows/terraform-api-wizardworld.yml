@@ -65,10 +65,10 @@ jobs:
         terraform plan -lock=false -no-color -out /$RUNNER_TEMP/$plan_name
       continue-on-error: false
 
-    # - name: Terraform Apply
-    #   id: apply
-    #   run: terraform apply -no-color -auto-approve /$RUNNER_TEMP/$plan_name
-    #   continue-on-error: false
-    #   if: steps.plan.outcome == 'success'
+    - name: Terraform Apply
+      id: apply
+      run: terraform apply -no-color -auto-approve /$RUNNER_TEMP/$plan_name
+      continue-on-error: false
+      if: steps.plan.outcome == 'success'
 
     
