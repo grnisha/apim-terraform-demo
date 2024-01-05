@@ -52,39 +52,39 @@ resource "azurerm_api_management_api_operation" "wizardworldapi" {
   api_management_name = var.apim_name
   resource_group_name = var.rg_name
   api_name            = azurerm_api_management_api.wizardworldapi.name
-  name                = "get-elixirs"
+  operation_id        = "get-elixirs"
   display_name        = "Get Elixirs"
   method              = "GET"
   url_template        = "/Elixirs"
   description         = "Get all Elixirs"
   depends_on = [azurerm_api_management_api.wizardworldapi, azurerm_api_management_api_schema.wizardworldapi]
   request {
-    query_parameters {
+    query_parameter {
       name       = "Name"
       type       = "string"
       schema_id  = "wizardworldschema"
       type_name  = "ElixirsGetRequest"
     }
-    query_parameters {
+    query_parameter {
       name       = "Difficulty"
       type       = "string"
       values     = ["Unknown", "Advanced", "Moderate", "Beginner", "OrdinaryWizardingLevel", "OneOfAKind"]
       schema_id  = "wizardworldschema"
       type_name  = "ElixirDifficulty"
     }
-    query_parameters {
+    query_parameter {
       name       = "Ingredient"
       type       = "string"
       schema_id  = "wizardworldschema"
       type_name  = "ElixirsGetRequest-1"
     }
-    query_parameters {
+    query_parameter {
       name       = "InventorFullName"
       type       = "string"
       schema_id  = "wizardworldschema"
       type_name  = "ElixirsGetRequest-2"
     }
-    query_parameters {
+    query_parameter {
       name       = "Manufacturer"
       type       = "string"
       schema_id  = "wizardworldschema"
@@ -96,19 +96,19 @@ resource "azurerm_api_management_api_operation" "wizardworldapi" {
     status_code = 200
     description = "Success"
 
-    representations {
+    representation {
       content_type = "text/plain"
       schema_id    = "wizardworldschema"
       type_name    = "ElixirsGet200TextPlainResponse"
     }
 
-    representations {
+    representation {
       content_type = "application/json"
       schema_id    = "wizardworldschema"
       type_name    = "ElixirsGet200ApplicationJsonResponse"
     }
 
-    representations {
+    representation {
       content_type = "text/json"
       schema_id    = "wizardworldschema"
       type_name    = "ElixirsGet200TextJsonResponse"
