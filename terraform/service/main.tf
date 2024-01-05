@@ -32,7 +32,6 @@ module "apim" {
   location            = local.resource_location
   workspace_id        = module.shared.workspace_id
   instrumentation_key = module.shared.instrumentation_key
-  apim_subnet_id      = module.networking.apim_subnet_id
 }
 
 
