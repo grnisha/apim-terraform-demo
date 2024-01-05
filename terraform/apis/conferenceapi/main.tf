@@ -1,12 +1,18 @@
-
+#-----------------------------------
+# Get Existing API Management
+#-----------------------------------
+data "azurerm_api_management" "apim" {
+  name                = var.apim_name
+  resource_group_name = var.rg_name
+}
 
 #-----------------------------------
 # Deploy API
 #-----------------------------------
 resource "azurerm_api_management_api" "conferenceapi" {
   name                = "conference-api"
-  resource_group_name =  var.rg_name
-  api_management_name = var.apim_name
+  resource_group_name = var.rg_name
+  api_management_name = azurerm_api_management.apim.name
   revision            = "1"
   display_name        = "Conference API"
   path                = "conference-api"
