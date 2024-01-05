@@ -10,7 +10,7 @@
 #  - AZURE_TENANT_ID
 #  - AZURE_OIDC_CLIENT_ID
 
-name: 'Terraform ES-APIM Deploy'
+name: 'Terraform APIM Service Deploy'
 
 on:
   workflow_dispatch: 
