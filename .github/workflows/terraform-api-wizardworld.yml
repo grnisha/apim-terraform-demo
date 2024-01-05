@@ -1,4 +1,4 @@
-name: 'Terraform Conference API Deploy'
+name: 'Terraform Wizard World API Deploy'
 
 on:
   workflow_dispatch: 
