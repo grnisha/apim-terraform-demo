@@ -28,7 +28,7 @@ resource "azurerm_api_management" "apim_internal" {
 #-------------------------------
 resource "azurerm_api_management_policy" "apim_policy" {
   api_management_id = azurerm_api_management.apim_internal.id
-  xml_content = file("./policy.xml")
+  xml_content = file("./modules/apim/policy.xml")
   depends_on = [azurerm_api_management.apim_internal]
 }
 
