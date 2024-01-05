@@ -17,7 +17,7 @@ resource "azurerm_api_management_api" "wizardworldapi" {
   display_name        = "Wizard World API"
   path                = "wizardworld"
   protocols           = ["https"]
-  service_url         = "https://wizardworld-api.azurewebsites.net"
+  service_url         = "https://wizard-world-api.herokuapp.com"
 }
 
 #-----------------------------------
