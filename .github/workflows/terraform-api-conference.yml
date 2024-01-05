@@ -64,33 +64,6 @@ jobs:
         terraform plan -lock=false -no-color -out /$RUNNER_TEMP/$plan_name
       continue-on-error: false
 
-    - run: terraform show -no-color /$RUNNER_TEMP/$plan_name
-      id: show
-
-    - uses: actions/github-script@v6
-      env:
-        PLAN: ${{ steps.show.outputs.stdout }} # <-- reference the "show" step
-      with:
-        script: |
-          const output = `#### Terraform Plan 📖\`${{ steps.plan.outcome }}\`
-            
-          <details><summary>Show Plan</summary>
-    
-          \`\`\`\n
-          ${process.env.PLAN}
-          \`\`\`
-    
-          </details>
-    
-          *Pushed by: @${{ github.actor }}, Action: \`${{ github.event_name }}\`*`;
-    
-          github.rest.issues.createComment({
-            issue_number: context.issue.number,
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            body: output
-          })`
-    
     - name: Terraform Apply
       id: apply
       run: terraform apply -no-color -auto-approve /$RUNNER_TEMP/$plan_name
