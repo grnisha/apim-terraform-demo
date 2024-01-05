@@ -27,9 +27,8 @@ resource "azurerm_api_management" "apim_internal" {
 # Creation of the APIM policy
 #-------------------------------
 resource "azurerm_api_management_policy" "apim_policy" {
-  api_management_name = azurerm_api_management.apim_internal.name
-  resource_group_name = azurerm_resource_group.apim_internal_rg.name
-  xml_content = file("./policy.xml")
+  api_management_id = azurerm_api_management.apim_internal.id
+  xml_content = file("policy.xml")
   depends_on = [azurerm_api_management.apim_internal]
 }
 
