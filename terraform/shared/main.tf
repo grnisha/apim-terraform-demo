@@ -13,8 +13,9 @@ resource "azurerm_api_management_product" "premiumproduct" {
   api_management_name = data.azurerm_api_management.apim.name
   display_name        = "Premium product"
   subscription_required = true
-  approval_required     = true
+  approval_required     = false
   published             = true
+
 }
 
 
