@@ -39,7 +39,7 @@ resource "azurerm_api_management_api_schema" "wizardworldapi" {
   resource_group_name = var.rg_name
   api_name            = azurerm_api_management_api.wizardworldapi.name
   content_type        = "application/vnd.oai.openapi.components+json"
-  document            = file("./schemas/wizardworldapi.json")
+  value               = file("./schemas/wizardworldapi.json")
   schema_id           = "wizardworldschema"
   depends_on = [azurerm_api_management_api.wizardworldapi]
 }
