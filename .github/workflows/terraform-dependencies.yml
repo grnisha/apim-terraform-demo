@@ -19,6 +19,9 @@ on:
   
 env:
   location: 'uksouth'
+  confapicontainer: 'conf-api-state'
+  sharedstatecontainer: 'shared-state'
+  demoapicontainer: 'demo-api-state'
 
 permissions:
   id-token: write
@@ -53,5 +56,17 @@ jobs:
 
             az storage container create \
               --name ${{ secrets.AZURE_TF_STATE_STORAGE_CONTAINER_NAME }} \
-              --account-name ${{ secrets.AZURE_TF_STATE_STORAGE_ACCOUNT_NAME }}
+              --account-name ${{ secrets.AZURE_TF_STATE_STORAGE_ACCOUNT_NAME }}           
+
+            az storage container create \
+              --name ${{ env.confapicontainer }} \
+              --account-name ${{ secrets.AZURE_TF_STATE_STORAGE_ACCOUNT_NAME }}       
+
+              az storage container create \
+                --name ${{ env.demoapicontainer }} \
+                --account-name ${{ secrets.AZURE_TF_STATE_STORAGE_ACCOUNT_NAME }}       
+
+                az storage container create \
+                  --name ${{ env.sharedstatecontainer }} \
+                  --account-name ${{ secrets.AZURE_TF_STATE_STORAGE_ACCOUNT_NAME }}
           fi
