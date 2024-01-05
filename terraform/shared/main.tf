@@ -8,7 +8,7 @@ data "azurerm_api_management" "apim" {
 
 # Create a product
 resource "azurerm_api_management_product" "premiumproduct" {
-  name                = "premium"
+  product_id          = "premium"
   resource_group_name = var.rg_name
   api_management_name = data.azurerm_api_management.apim.name
   display_name        = "Premium product"
@@ -48,5 +48,5 @@ resource "azurerm_api_management_subscription" "premium_subscription" {
   display_name        = "Premium Subscription"
   primary_key         = "premium-primary-key-${substr(sha1(var.resource_group_name), 0, 8)}"
   secondary_key       = "premium-secondary-key-${substr(sha1(var.resource_group_name), 0, 8)}"
-  product_id          = azurerm_api_management_product.premium_product.id
+  product_id          = azurerm_api_management_product.premiumproduct.id
 }
