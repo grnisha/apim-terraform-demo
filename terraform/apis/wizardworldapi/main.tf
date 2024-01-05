@@ -71,24 +71,28 @@ resource "azurerm_api_management_api_operation" "wizardworldapi" {
       values     = ["Unknown", "Advanced", "Moderate", "Beginner", "OrdinaryWizardingLevel", "OneOfAKind"]
       schema_id  = "wizardworldschema"
       type_name  = "ElixirDifficulty"
+      required  = false
     }
     query_parameter {
       name       = "Ingredient"
       type       = "string"
       schema_id  = "wizardworldschema"
       type_name  = "ElixirsGetRequest-1"
+      required  = false
     }
     query_parameter {
       name       = "InventorFullName"
       type       = "string"
       schema_id  = "wizardworldschema"
       type_name  = "ElixirsGetRequest-2"
+      required  = false
     }
     query_parameter {
       name       = "Manufacturer"
       type       = "string"
       schema_id  = "wizardworldschema"
       type_name  = "ElixirsGetRequest-3"
+      required  = false
     }
   }
 
