@@ -12,7 +12,7 @@ data "azurerm_api_management" "apim" {
 resource "azurerm_api_management_api" "conferenceapi" {
   name                = "conference-api"
   resource_group_name = var.rg_name
-  api_management_name = azurerm_api_management.apim.name
+  api_management_name = data.azurerm_api_management.apim.name
   revision            = "1"
   display_name        = "Conference API"
   path                = "conference-api"
