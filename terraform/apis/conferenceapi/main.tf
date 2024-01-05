@@ -39,6 +39,6 @@ resource "azurerm_api_management_api_operation_policy" "conferenceapi" {
   api_name            = azurerm_api_management_api.conferenceapi.name
   operation_id        = "GetSessions"
   display_name        = "GetSessions Policy"
-  xml_content         = file("./policies/operation-policy.xml")
+  xml_content         = file("./policies/op-sessions-policy.xml")
   depends_on = [azurerm_api_management_api_operation.conferenceapi]
 }
