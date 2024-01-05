@@ -64,6 +64,7 @@ resource "azurerm_api_management_api_operation" "wizardworldapi" {
       type       = "string"
       schema_id  = "wizardworldschema"
       type_name  = "ElixirsGetRequest"
+      required  = false
     }
     query_parameter {
       name       = "Difficulty"
