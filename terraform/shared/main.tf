@@ -22,7 +22,7 @@ resource "azurerm_api_management_product" "premiumproduct" {
 resource "azurerm_api_management_product_policy" "premiumproductpolicy" { 
   resource_group_name = var.rg_name
   api_management_name = data.azurerm_api_management.apim.name
-  product_id          = azurerm_api_management_product.premium_product.id
+  product_id          = azurerm_api_management_product.premiumproduct.id
   xml_content         = file("./policies/pdt-premium-policy.xml")
     depends_on = [azurerm_api_management_product.premiumproduct]
  }
@@ -46,7 +46,7 @@ resource "azurerm_api_management_subscription" "premium_subscription" {
   resource_group_name = var.rg_name
   api_management_name = data.azurerm_api_management.apim.name
   display_name        = "Premium Subscription"
-  primary_key         = "premium-primary-key-${substr(sha1(var.resource_group_name), 0, 8)}"
-  secondary_key       = "premium-secondary-key-${substr(sha1(var.resource_group_name), 0, 8)}"
+  primary_key         = "premium-primary-key-${substr(sha1(var.rg_name), 0, 8)}"
+  secondary_key       = "premium-secondary-key-${substr(sha1(var.rg_name), 0, 8)}"
   product_id          = azurerm_api_management_product.premiumproduct.id
 }
