@@ -1,0 +1,17 @@
+<policies>
+    <inbound>
+        <base />
+        <set-header name="elixirs-header" exists-action="append">
+            <value>elixirs-header-01</value>
+        </set-header>
+    </inbound>
+    <backend>
+        <base />
+    </backend>
+    <outbound>
+        <base />
+    </outbound>
+    <on-error>
+        <base />
+    </on-error>
+</policies>

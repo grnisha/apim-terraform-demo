@@ -17,6 +17,7 @@ resource "azurerm_api_management_api" "conferenceapi" {
   display_name        = "Conference API"
   path                = "conference-api"
   protocols           = ["https"]
+  service_url         = "https://conferenceapi.azurewebsites.net"
 
   import {
     content_format = "swagger-json"
