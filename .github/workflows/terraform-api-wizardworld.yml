@@ -103,7 +103,7 @@ jobs:
       run: newman run tests/wizardworldapi.json -x -r junit --reporter-junit-export JUnitReport.xml 
     
     - name: Report
-      uses: dorny/test-reporter@v1.6.0
+      uses: dorny/test-reporter@v1
       if: always()
       with:
         name: Test Report
