@@ -62,8 +62,6 @@ resource "azurerm_api_management_api_operation" "wizardworldapi" {
     query_parameter {
       name       = "Name"
       type       = "string"
-      schema_id  = "wizardworldschema"
-      type_name  = "ElixirsGetRequest"
       required  = false
     }
     query_parameter {
@@ -77,22 +75,16 @@ resource "azurerm_api_management_api_operation" "wizardworldapi" {
     query_parameter {
       name       = "Ingredient"
       type       = "string"
-      schema_id  = "wizardworldschema"
-      type_name  = "ElixirsGetRequest-1"
       required  = false
     }
     query_parameter {
       name       = "InventorFullName"
       type       = "string"
-      schema_id  = "wizardworldschema"
-      type_name  = "ElixirsGetRequest-2"
       required  = false
     }
     query_parameter {
       name       = "Manufacturer"
       type       = "string"
-      schema_id  = "wizardworldschema"
-      type_name  = "ElixirsGetRequest-3"
       required  = false
     }
   }
@@ -104,19 +96,19 @@ resource "azurerm_api_management_api_operation" "wizardworldapi" {
     representation {
       content_type = "text/plain"
       schema_id    = "wizardworldschema"
-      type_name    = "ElixirsGet200TextPlainResponse"
+      type_name    = "Elixirs"
     }
 
     representation {
       content_type = "application/json"
       schema_id    = "wizardworldschema"
-      type_name    = "ElixirsGet200ApplicationJsonResponse"
+      type_name    = "Elixirs"
     }
 
     representation {
       content_type = "text/json"
       schema_id    = "wizardworldschema"
-      type_name    = "ElixirsGet200TextJsonResponse"
+      type_name    = "Elixirs"
     }
   }
 }
@@ -163,19 +155,19 @@ resource "azurerm_api_management_api_operation" "wizardworldapihouses" {
     representation {
       content_type = "text/plain"
       schema_id    = "wizardworldschema"
-      type_name    = "HousesGet200TextPlainResponse"
+      type_name    = "Houses"
     }
 
     representation {
       content_type = "application/json"
       schema_id    = "wizardworldschema"
-      type_name    = "HousesGet200ApplicationJsonResponse"
+      type_name    = "Houses"
     }
 
     representation {
       content_type = "text/json"
       schema_id    = "wizardworldschema"
-      type_name    = "HousesGet200TextJsonResponse"
+      type_name    = "Houses"
     }
   }
 }

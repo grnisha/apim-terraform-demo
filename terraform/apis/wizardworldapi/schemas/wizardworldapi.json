@@ -38,19 +38,19 @@
         "nullable": true
       },
       "difficulty": {
-        "$ref": "#/components/schemas/ElixirDifficulty"
+        "$ref": "#/ElixirDifficulty"
       },
       "ingredients": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/IngredientDto"
+          "$ref": "#/IngredientDto"
         },
         "nullable": true
       },
       "inventors": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/ElixirInventorDto"
+          "$ref": "#/ElixirInventorDto"
         },
         "nullable": true
       },
@@ -130,14 +130,14 @@
       "heads": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/HouseHeadDto"
+          "$ref": "#/HouseHeadDto"
         },
         "nullable": true
       },
       "traits": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/TraitDto"
+          "$ref": "#/TraitDto"
         },
         "nullable": true
       }
@@ -180,7 +180,7 @@
     "type": "object",
     "properties": {
       "feedbackType": {
-        "$ref": "#/components/schemas/FeedbackType"
+        "$ref": "#/FeedbackType"
       },
       "feedback": {
         "type": "string",
@@ -218,10 +218,10 @@
         "nullable": true
       },
       "type": {
-        "$ref": "#/components/schemas/SpellType"
+        "$ref": "#/SpellType"
       },
       "light": {
-        "$ref": "#/components/schemas/SpellLight"
+        "$ref": "#/SpellLight"
       },
       "creator": {
         "type": "string",
@@ -291,7 +291,7 @@
         "format": "uuid"
       },
       "name": {
-        "$ref": "#/components/schemas/TraitName"
+        "$ref": "#/TraitName"
       }
     },
     "additionalProperties": false
@@ -335,7 +335,7 @@
       "elixirs": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/WizardElixirDto"
+          "$ref": "#/WizardElixirDto"
         },
         "nullable": true
       },
@@ -367,5 +367,19 @@
       }
     },
     "additionalProperties": false
+  },
+  "Elixirs": {
+    "type": "array",
+    "items": {
+        "$ref": "#/ElixirDto"
+    },
+    "nullable": true
+  },
+  "Houses": {
+    "type": "array",
+    "items": {
+        "$ref": "#/HouseDto"
+    },
+    "nullable": true
   }
 }
