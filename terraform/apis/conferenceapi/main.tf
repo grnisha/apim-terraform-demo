@@ -48,3 +48,22 @@ resource "azurerm_api_management_api_operation_policy" "conferenceapi" {
   xml_content         = file("./policies/op-sessions-policy.xml")
   depends_on = [azurerm_api_management_api.conferenceapi]
 }
+
+#-----------------------------------
+# Get product
+#-----------------------------------
+data "azurerm_api_management_product" "premiumproduct" {
+  product_id          = "premium"
+  api_management_name = var.apim_name
+  resource_group_name = var.rg_name
+}
+
+#-----------------------------------
+# Add API to product
+#-----------------------------------
+resource "azurerm_api_management_product_api" "example" {
+  api_name            = data.azurerm_api_management_api.conferenceapi.name
+  product_id          = data.azurerm_api_management_product.premiumproduct.product_id
+  api_management_name = var.apim_name
+  resource_group_name = var.rg_name
+}
