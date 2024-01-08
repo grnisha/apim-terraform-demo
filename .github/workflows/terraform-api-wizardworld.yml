@@ -96,7 +96,7 @@ jobs:
 
     - name: Run Tests
       id: run_tests
-      run: newman run postmancollection/DemoConfApi.json -x -r junit --reporter-junit-export JUnitReport.xml 
+      run: newman run tests/wizardworldapi.json -x -r junit --reporter-junit-export JUnitReport.xml 
     
     - name: Report
       uses: dorny/test-reporter@v1.6.0
