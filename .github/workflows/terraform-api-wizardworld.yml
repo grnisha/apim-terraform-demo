@@ -34,7 +34,7 @@ jobs:
     steps:
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v2
@@ -70,5 +70,40 @@ jobs:
       run: terraform apply -no-color -auto-approve /$RUNNER_TEMP/$plan_name
       continue-on-error: false
       if: steps.plan.outcome == 'success'
+
+  test:
+    name: 'Test' 
+    environment: dev
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: npm install newman
+      run: npm install newman -g
+
+    - name: string-tokeniser
+      uses: scott-david-walker/tokeniser@v1.0.5
+      with:
+        files: "**/tests/wizardworldapi.json"
+        prefix: '##'
+        suffix: '##'
+        fail-if-no-provided-replacement: true
+      env:
+        baseUrl: ${{ secrets.WIZARDWORLD_API_URL }}
+        apiKey: ${{ secrets.WIZARDWORLD_API_KEY }}
+
+    - name: Run Tests
+      id: run_tests
+      run: newman run postmancollection/DemoConfApi.json -x -r junit --reporter-junit-export JUnitReport.xml 
+    
+    - name: Report
+      uses: dorny/test-reporter@v1.6.0
+      if: always()
+      with:
+        name: Test Report
+        path: JUnitReport.xml
+        reporter: java-junit
+        fail-on-error: false
 
     
