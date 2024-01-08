@@ -171,3 +171,23 @@ resource "azurerm_api_management_api_operation" "wizardworldapihouses" {
     }
   }
 }
+
+#-----------------------------------
+# Get product
+#-----------------------------------
+data "azurerm_api_management_product" "premiumproduct" {
+  product_id          = "premium"
+  api_management_name = var.apim_name
+  resource_group_name = var.rg_name
+}
+
+#-----------------------------------
+# Add API to product
+#-----------------------------------
+resource "azurerm_api_management_product_api" "premiumproduct" {
+  api_name            = azurerm_api_management_api.wizardworldapi.name
+  product_id          = data.azurerm_api_management_product.premiumproduct.product_id
+  api_management_name = var.apim_name
+  resource_group_name = var.rg_name
+  depends_on = [azurerm_api_management_api.wizardworldapi]
+}
