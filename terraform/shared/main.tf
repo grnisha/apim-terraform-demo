@@ -23,7 +23,7 @@ resource "azurerm_api_management_product" "premiumproduct" {
 resource "azurerm_api_management_product_policy" "premiumproductpolicy" { 
   resource_group_name = var.rg_name
   api_management_name = data.azurerm_api_management.apim.name
-  product_id          = azurerm_api_management_product.premiumproduct.id
+  product_id          = azurerm_api_management_product.premiumproduct.product_id
   xml_content         = file("./policies/pdt-premium-policy.xml")
     depends_on = [azurerm_api_management_product.premiumproduct]
  }
