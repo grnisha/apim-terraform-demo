@@ -1,371 +1,384 @@
 {
-    "ElixirDifficulty": {
-      "enum": [
-        "Unknown",
-        "Advanced",
-        "Moderate",
-        "Beginner",
-        "OrdinaryWizardingLevel",
-        "OneOfAKind"
-      ],
-      "type": "string"
+  "openapi": "3.0.1",
+  "info": {
+    "title": "WizardWorldApi",
+    "contact": {
+      "name": "Github",
+      "url": "https://github.com/MossPiglets/WizardWorldAPI"
     },
-    "ElixirDto": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "format": "uuid"
-        },
-        "name": {
-          "type": "string",
-          "nullable": true
-        },
-        "effect": {
-          "type": "string",
-          "nullable": true
-        },
-        "sideEffects": {
-          "type": "string",
-          "nullable": true
-        },
-        "characteristics": {
-          "type": "string",
-          "nullable": true
-        },
-        "time": {
-          "type": "string",
-          "nullable": true
-        },
-        "difficulty": {
-          "$ref": "#/components/schemas/ElixirDifficulty"
-        },
-        "ingredients": {
-          "type": "array",
-          "items": {
-            "$ref": "#/components/schemas/IngredientDto"
+    "version": "1.0.1"
+  },
+  "components": {
+    "schemas": {
+      "ElixirDifficulty": {
+        "enum": [
+          "Unknown",
+          "Advanced",
+          "Moderate",
+          "Beginner",
+          "OrdinaryWizardingLevel",
+          "OneOfAKind"
+        ],
+        "type": "string"
+      },
+      "ElixirDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
           },
-          "nullable": true
-        },
-        "inventors": {
-          "type": "array",
-          "items": {
-            "$ref": "#/components/schemas/ElixirInventorDto"
+          "name": {
+            "type": "string",
+            "nullable": true
           },
-          "nullable": true
-        },
-        "manufacturer": {
-          "type": "string",
-          "nullable": true
-        }
-      },
-      "additionalProperties": false
-    },
-    "ElixirInventorDto": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "format": "uuid"
-        },
-        "firstName": {
-          "type": "string",
-          "nullable": true
-        },
-        "lastName": {
-          "type": "string",
-          "nullable": true
-        }
-      },
-      "additionalProperties": false
-    },
-    "FeedbackType": {
-      "enum": [
-        "General",
-        "Bug",
-        "DataError",
-        "Suggestion"
-      ],
-      "type": "string"
-    },
-    "GetHousesQuery": {
-      "type": "object",
-      "additionalProperties": false
-    },
-    "HouseDto": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "format": "uuid"
-        },
-        "name": {
-          "type": "string",
-          "nullable": true
-        },
-        "houseColours": {
-          "type": "string",
-          "nullable": true
-        },
-        "founder": {
-          "type": "string",
-          "nullable": true
-        },
-        "animal": {
-          "type": "string",
-          "nullable": true
-        },
-        "element": {
-          "type": "string",
-          "nullable": true
-        },
-        "ghost": {
-          "type": "string",
-          "nullable": true
-        },
-        "commonRoom": {
-          "type": "string",
-          "nullable": true
-        },
-        "heads": {
-          "type": "array",
-          "items": {
-            "$ref": "#/components/schemas/HouseHeadDto"
+          "effect": {
+            "type": "string",
+            "nullable": true
           },
-          "nullable": true
-        },
-        "traits": {
-          "type": "array",
-          "items": {
-            "$ref": "#/components/schemas/TraitDto"
+          "sideEffects": {
+            "type": "string",
+            "nullable": true
           },
-          "nullable": true
-        }
-      },
-      "additionalProperties": false
-    },
-    "HouseHeadDto": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "format": "uuid"
-        },
-        "firstName": {
-          "type": "string",
-          "nullable": true
-        },
-        "lastName": {
-          "type": "string",
-          "nullable": true
-        }
-      },
-      "additionalProperties": false
-    },
-    "IngredientDto": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "format": "uuid"
-        },
-        "name": {
-          "type": "string",
-          "nullable": true
-        }
-      },
-      "additionalProperties": false
-    },
-    "SendFeedbackCommand": {
-      "type": "object",
-      "properties": {
-        "feedbackType": {
-          "$ref": "#/components/schemas/FeedbackType"
-        },
-        "feedback": {
-          "type": "string",
-          "nullable": true
-        },
-        "entityId": {
-          "type": "string",
-          "format": "uuid",
-          "nullable": true
-        }
-      },
-      "additionalProperties": false
-    },
-    "SpellDto": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "format": "uuid"
-        },
-        "name": {
-          "type": "string",
-          "nullable": true
-        },
-        "incantation": {
-          "type": "string",
-          "nullable": true
-        },
-        "effect": {
-          "type": "string",
-          "nullable": true
-        },
-        "canBeVerbal": {
-          "type": "boolean",
-          "nullable": true
-        },
-        "type": {
-          "$ref": "#/components/schemas/SpellType"
-        },
-        "light": {
-          "$ref": "#/components/schemas/SpellLight"
-        },
-        "creator": {
-          "type": "string",
-          "nullable": true
-        }
-      },
-      "additionalProperties": false
-    },
-    "SpellLight": {
-      "enum": [
-        "None",
-        "Blue",
-        "IcyBlue",
-        "Red",
-        "Gold",
-        "Purple",
-        "Transparent",
-        "White",
-        "Green",
-        "Orange",
-        "Yellow",
-        "BrightBlue",
-        "Pink",
-        "Violet",
-        "BlueishWhite",
-        "Silver",
-        "Scarlet",
-        "Fire",
-        "FieryScarlet",
-        "Grey",
-        "DarkRed",
-        "Turquoise",
-        "PsychedelicTransparentWave",
-        "BrightYellow",
-        "BlackSmoke"
-      ],
-      "type": "string"
-    },
-    "SpellType": {
-      "enum": [
-        "None",
-        "Charm",
-        "Conjuration",
-        "Spell",
-        "Transfiguration",
-        "HealingSpell",
-        "DarkCharm",
-        "Jinx",
-        "Curse",
-        "MagicalTransportation",
-        "Hex",
-        "CounterSpell",
-        "DarkArts",
-        "CounterJinx",
-        "CounterCharm",
-        "Untransfiguration",
-        "BindingMagicalContract",
-        "Vanishment"
-      ],
-      "type": "string"
-    },
-    "TraitDto": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "format": "uuid"
-        },
-        "name": {
-          "$ref": "#/components/schemas/TraitName"
-        }
-      },
-      "additionalProperties": false
-    },
-    "TraitName": {
-      "enum": [
-        "None",
-        "Courage",
-        "Bravery",
-        "Determination",
-        "Daring",
-        "Nerve",
-        "Chivalary",
-        "Hardworking",
-        "Patience",
-        "Fairness",
-        "Just",
-        "Loyalty",
-        "Modesty",
-        "Wit",
-        "Learning",
-        "Wisdom",
-        "Acceptance",
-        "Inteligence",
-        "Creativity",
-        "Resourcefulness",
-        "Pride",
-        "Cunning",
-        "Ambition",
-        "Selfpreservation"
-      ],
-      "type": "string"
-    },
-    "Unit": {
-      "type": "object",
-      "additionalProperties": false
-    },
-    "WizardDto": {
-      "type": "object",
-      "properties": {
-        "elixirs": {
-          "type": "array",
-          "items": {
-            "$ref": "#/components/schemas/WizardElixirDto"
+          "characteristics": {
+            "type": "string",
+            "nullable": true
           },
-          "nullable": true
+          "time": {
+            "type": "string",
+            "nullable": true
+          },
+          "difficulty": {
+            "$ref": "#/components/schemas/ElixirDifficulty"
+          },
+          "ingredients": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IngredientDto"
+            },
+            "nullable": true
+          },
+          "inventors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ElixirInventorDto"
+            },
+            "nullable": true
+          },
+          "manufacturer": {
+            "type": "string",
+            "nullable": true
+          }
         },
-        "id": {
-          "type": "string",
-          "format": "uuid"
-        },
-        "firstName": {
-          "type": "string",
-          "nullable": true
-        },
-        "lastName": {
-          "type": "string",
-          "nullable": true
-        }
+        "additionalProperties": false
       },
-      "additionalProperties": false
-    },
-    "WizardElixirDto": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "format": "uuid"
+      "ElixirInventorDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          }
         },
-        "name": {
-          "type": "string",
-          "nullable": true
-        }
+        "additionalProperties": false
       },
-      "additionalProperties": false
+      "FeedbackType": {
+        "enum": [
+          "General",
+          "Bug",
+          "DataError",
+          "Suggestion"
+        ],
+        "type": "string"
+      },
+      "GetHousesQuery": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "HouseDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "houseColours": {
+            "type": "string",
+            "nullable": true
+          },
+          "founder": {
+            "type": "string",
+            "nullable": true
+          },
+          "animal": {
+            "type": "string",
+            "nullable": true
+          },
+          "element": {
+            "type": "string",
+            "nullable": true
+          },
+          "ghost": {
+            "type": "string",
+            "nullable": true
+          },
+          "commonRoom": {
+            "type": "string",
+            "nullable": true
+          },
+          "heads": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/HouseHeadDto"
+            },
+            "nullable": true
+          },
+          "traits": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TraitDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "HouseHeadDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "IngredientDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SendFeedbackCommand": {
+        "type": "object",
+        "properties": {
+          "feedbackType": {
+            "$ref": "#/components/schemas/FeedbackType"
+          },
+          "feedback": {
+            "type": "string",
+            "nullable": true
+          },
+          "entityId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SpellDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "incantation": {
+            "type": "string",
+            "nullable": true
+          },
+          "effect": {
+            "type": "string",
+            "nullable": true
+          },
+          "canBeVerbal": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/SpellType"
+          },
+          "light": {
+            "$ref": "#/components/schemas/SpellLight"
+          },
+          "creator": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SpellLight": {
+        "enum": [
+          "None",
+          "Blue",
+          "IcyBlue",
+          "Red",
+          "Gold",
+          "Purple",
+          "Transparent",
+          "White",
+          "Green",
+          "Orange",
+          "Yellow",
+          "BrightBlue",
+          "Pink",
+          "Violet",
+          "BlueishWhite",
+          "Silver",
+          "Scarlet",
+          "Fire",
+          "FieryScarlet",
+          "Grey",
+          "DarkRed",
+          "Turquoise",
+          "PsychedelicTransparentWave",
+          "BrightYellow",
+          "BlackSmoke"
+        ],
+        "type": "string"
+      },
+      "SpellType": {
+        "enum": [
+          "None",
+          "Charm",
+          "Conjuration",
+          "Spell",
+          "Transfiguration",
+          "HealingSpell",
+          "DarkCharm",
+          "Jinx",
+          "Curse",
+          "MagicalTransportation",
+          "Hex",
+          "CounterSpell",
+          "DarkArts",
+          "CounterJinx",
+          "CounterCharm",
+          "Untransfiguration",
+          "BindingMagicalContract",
+          "Vanishment"
+        ],
+        "type": "string"
+      },
+      "TraitDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "$ref": "#/components/schemas/TraitName"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TraitName": {
+        "enum": [
+          "None",
+          "Courage",
+          "Bravery",
+          "Determination",
+          "Daring",
+          "Nerve",
+          "Chivalary",
+          "Hardworking",
+          "Patience",
+          "Fairness",
+          "Just",
+          "Loyalty",
+          "Modesty",
+          "Wit",
+          "Learning",
+          "Wisdom",
+          "Acceptance",
+          "Inteligence",
+          "Creativity",
+          "Resourcefulness",
+          "Pride",
+          "Cunning",
+          "Ambition",
+          "Selfpreservation"
+        ],
+        "type": "string"
+      },
+      "Unit": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "WizardDto": {
+        "type": "object",
+        "properties": {
+          "elixirs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WizardElixirDto"
+            },
+            "nullable": true
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WizardElixirDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
     }
   }
+}
