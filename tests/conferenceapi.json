@@ -1,0 +1,913 @@
+{
+	"info": {
+		"_postman_id": "ebb66792-4a94-4294-a1a5-adf3e8457201",
+		"name": "Conference API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32192189"
+	},
+	"item": [
+		{
+			"name": "sessions",
+			"item": [
+				{
+					"name": "GetSessions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/sessions?speakername=<string>&dayno=<integer>&keyword=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"sessions"
+							],
+							"query": [
+								{
+									"key": "speakername",
+									"value": "<string>"
+								},
+								{
+									"key": "dayno",
+									"value": "<integer>",
+									"description": "Format - int32."
+								},
+								{
+									"key": "keyword",
+									"value": "<string>"
+								}
+							]
+						},
+						"description": "A list of sessions.  Optional parameters work as filters to reduce the listed sessions."
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Ocp-Apim-Subscription-Key",
+										"value": "<API Key>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/sessions?speakername=<string>&dayno=<integer>&keyword=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"sessions"
+									],
+									"query": [
+										{
+											"key": "speakername",
+											"value": "<string>"
+										},
+										{
+											"key": "dayno",
+											"value": "<integer>",
+											"description": "Format - int32."
+										},
+										{
+											"key": "keyword",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "session",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "topics",
+							"item": [
+								{
+									"name": "GetSessionTopics",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/session/:id/topics",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"session",
+												":id",
+												"topics"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<integer>",
+													"description": "(Required) Format - int32."
+												}
+											]
+										},
+										"description": "A list of topics covered by a particular session"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Ocp-Apim-Subscription-Key",
+														"value": "<API Key>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/session/:id/topics",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"session",
+														":id",
+														"topics"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": null
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "feedback",
+							"item": [
+								{
+									"name": "SubmitSession",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "text/plain"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<string>"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/session/:id/feedback",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"session",
+												":id",
+												"feedback"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<integer>",
+													"description": "(Required) Format - int32."
+												}
+											]
+										},
+										"description": "Retreive a representation of a single session by Id"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "text/plain"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Ocp-Apim-Subscription-Key",
+														"value": "<API Key>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "<string>"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/session/:id/feedback",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"session",
+														":id",
+														"feedback"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": null
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "GetSession",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/session/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"session",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"description": "(Required) Format - int32."
+										}
+									]
+								},
+								"description": "Retreive a representation of a single session by Id"
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Ocp-Apim-Subscription-Key",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/session/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"session",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": null
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "speakers",
+			"item": [
+				{
+					"name": "GetSpeakers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/speakers?dayno=<integer>&speakername=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"speakers"
+							],
+							"query": [
+								{
+									"key": "dayno",
+									"value": "<integer>",
+									"description": "Format - int32."
+								},
+								{
+									"key": "speakername",
+									"value": "<string>"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Ocp-Apim-Subscription-Key",
+										"value": "<API Key>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/speakers?dayno=<integer>&speakername=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"speakers"
+									],
+									"query": [
+										{
+											"key": "dayno",
+											"value": "<integer>",
+											"description": "Format - int32."
+										},
+										{
+											"key": "speakername",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "speaker",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "sessions",
+							"item": [
+								{
+									"name": "GetSpeakerSessions",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/speaker/:id/sessions",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"speaker",
+												":id",
+												"sessions"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<integer>",
+													"description": "(Required) Format - int32."
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Ocp-Apim-Subscription-Key",
+														"value": "<API Key>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/speaker/:id/sessions",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"speaker",
+														":id",
+														"sessions"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": null
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "topics",
+							"item": [
+								{
+									"name": "GetSpeakerTopics",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/speaker/:id/topics",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"speaker",
+												":id",
+												"topics"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<integer>",
+													"description": "(Required) Format - int32."
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Ocp-Apim-Subscription-Key",
+														"value": "<API Key>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/speaker/:id/topics",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"speaker",
+														":id",
+														"topics"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": null
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "GetSpeaker",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/speaker/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"speaker",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"description": "(Required) Format - int32."
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Ocp-Apim-Subscription-Key",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/speaker/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"speaker",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": null
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "topics",
+			"item": [
+				{
+					"name": "GetTopics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/topics?dayno=<integer>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"topics"
+							],
+							"query": [
+								{
+									"key": "dayno",
+									"value": "<integer>",
+									"description": "Format - int32."
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Ocp-Apim-Subscription-Key",
+										"value": "<API Key>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/topics?dayno=<integer>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"topics"
+									],
+									"query": [
+										{
+											"key": "dayno",
+											"value": "<integer>",
+											"description": "Format - int32."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "topic",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "speakers",
+							"item": [
+								{
+									"name": "GetTopicSpeakers",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/topic/:id/speakers",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"topic",
+												":id",
+												"speakers"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<integer>",
+													"description": "(Required) Format - int32."
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Ocp-Apim-Subscription-Key",
+														"value": "<API Key>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/topic/:id/speakers",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"topic",
+														":id",
+														"speakers"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": null
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "sessions",
+							"item": [
+								{
+									"name": "GetTopicSessions",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/topic/:id/sessions",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"topic",
+												":id",
+												"sessions"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<integer>",
+													"description": "(Required) Format - int32."
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Ocp-Apim-Subscription-Key",
+														"value": "<API Key>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/topic/:id/sessions",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"topic",
+														":id",
+														"sessions"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": null
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "GetTopic",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/topic/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"topic",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"description": "(Required) Format - int32."
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Ocp-Apim-Subscription-Key",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/topic/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"topic",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": null
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "key",
+				"value": "Ocp-Apim-Subscription-Key",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "{{apiKey}}",
+				"type": "string"
+			},
+			{
+				"key": "in",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "${CONFERENCE_API_URL}"
+		},
+		{
+			"key": "apiKey",
+			"value": "${CONFERENCE_API_KEY}",
+			"type": "string"
+		}
+	]
+}
