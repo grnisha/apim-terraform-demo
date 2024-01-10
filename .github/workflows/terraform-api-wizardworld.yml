@@ -97,6 +97,9 @@ jobs:
         baseUrl: ${{ secrets.WIZARDWORLD_API_URL }}
         apiKey: ${{ secrets.WIZARDWORLD_API_KEY }}
 
+    - name: Display wizardworldapi json
+      run: cat tests/wizardworldapi.json
+
     - name: Run Tests
       id: run_tests
       run: newman run tests/wizardworldapi.json -x -r junit --reporter-junit-export JUnitReport.xml 
