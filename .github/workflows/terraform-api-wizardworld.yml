@@ -74,6 +74,9 @@ jobs:
     name: 'Test' 
     environment: dev
     runs-on: ubuntu-latest
+    env:
+      WIZARDWORLD_API_URL: ${{ secrets.WIZARDWORLD_API_URL }}
+      WIZARDWORLD_API_KEY: ${{ secrets.WIZARDWORLD_API_KEY }}
     needs: deploy
     permissions:
       id-token: write
@@ -86,16 +89,22 @@ jobs:
     - name: npm install newman
       run: npm install newman -g
 
-    - name: string-tokeniser
-      uses: scott-david-walker/tokeniser@v1.0.5
-      with:
-        files: "**/tests/wizardworldapi.json"
-        prefix: '##'
-        suffix: '##'
-        fail-if-no-provided-replacement: true
-      env:
-        baseUrl: ${{ secrets.WIZARDWORLD_API_URL }}
-        apiKey: ${{ secrets.WIZARDWORLD_API_KEY }}
+    # - name: string-tokeniser
+    #   uses: scott-david-walker/tokeniser@v1.0.5
+    #   with:
+    #     files: "**/tests/wizardworldapi.json"
+    #     prefix: '##'
+    #     suffix: '##'
+    #     fail-if-no-provided-replacement: true
+    #   env:
+    #     baseUrl: ${{ secrets.WIZARDWORLD_API_URL }}
+    #     apiKey: ${{ secrets.WIZARDWORLD_API_KEY }}
+
+    - name: Replace variables in JSON file
+      run: |
+        envsubst < tests/wizardworldapi.json > tests/wizardworldapi.json.tmp
+        mv tests/wizardworldapi.json.tmp tests/wizardworldapi.json
+
 
     - name: Display wizardworldapi json
       run: cat tests/wizardworldapi.json

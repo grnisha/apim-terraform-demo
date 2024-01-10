@@ -237,11 +237,11 @@
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "##baseUrl##"
+			"value": "${WIZARDWORLD_API_URL}"
 		},
 		{
 			"key": "apiKey",
-			"value": "##apiKey##",
+			"value": "${WIZARDWORLD_API_KEY}",
 			"type": "string"
 		}
 	]
