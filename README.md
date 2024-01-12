@@ -1,6 +1,6 @@
 # APIM Terraform Demo
 
-To Do
+Sample terraform templates & GitHub actions to deploy APIM and 2 demo API's
 
 ## References
 
