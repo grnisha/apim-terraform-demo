@@ -2,7 +2,7 @@
     <inbound>
         <base />
         <set-header name="api-header" exists-action="append">
-            <value>api-header-01</value>
+            <value>api-header-001</value>
         </set-header>
     </inbound>
     <backend>
