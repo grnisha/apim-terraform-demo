@@ -16,11 +16,8 @@ on:
   workflow_dispatch: 
     
   pull_request:
-    branches:
-    - main
-    
-    paths: 
-    - '/terraform/service/**'
+    branches: [ main ]    
+    paths: [ 'terraform/service/**' ]
 
 permissions:
   id-token: write

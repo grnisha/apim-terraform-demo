@@ -4,12 +4,8 @@ on:
   workflow_dispatch: 
     
   push:
-    branches:
-    - main
-    
-    paths: 
-    - '/terraform/shared/**'
-  pull_request:
+    branches: [ main]
+    paths: [ 'terraform/shared/**']
 
 jobs:
   deploy:

@@ -4,11 +4,8 @@ on:
   workflow_dispatch: 
     
   push:
-    branches:
-    - main   
-    paths: 
-    - '/terraform/apis/wizardworldapi/**'
-  pull_request:
+    branches:  [ "main" ] 
+    paths: [ 'terraform/apis/wizardworldapi/**' ]
 
 jobs:
   deploy:
