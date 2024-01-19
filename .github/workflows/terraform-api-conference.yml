@@ -2,14 +2,10 @@ name: 'Terraform Conference API Deploy'
 
 on:
   workflow_dispatch: 
-    
+
   push:
-    branches:
-    - main
-    
-    paths: 
-    - '/terraform/apis/conferenceapi/**'
-  pull_request:
+    branches: [ "main" ]
+    paths: [ 'terraform/apis/conferenceapi/**' ]
 
 jobs:
   deploy:
